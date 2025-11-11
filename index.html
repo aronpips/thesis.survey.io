@@ -489,12 +489,12 @@
         }
     </style>
 
-    <!-- Firebase Scripts -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
     <script>
         // ===== FIREBASE CONFIGURATION =====
-        // Replace the values below with your actual Firebase config from Firebase Console
+        // Replace ALL values below with your Firebase credentials from Firebase Console
         const firebaseConfig = {
             apiKey: "AIzaSyBCcqVTITfJDLGPbYRsnSuAi8lc8RXYmUs",
             authDomain: "thesis-survey-app.firebaseapp.com",
@@ -823,9 +823,25 @@
 
         // Admin: Update dashboard
         function updateAdminDashboard() {
-            // Load current links
-            document.getElementById('surveyALink').value = surveyLinks.surveyA;
-            document.getElementById('surveyBLink').value = surveyLinks.surveyB;
+            // Load links from Firebase
+            db.ref('surveyLinks').once('value', (snapshot) => {
+                if (snapshot.exists()) {
+                    const links = snapshot.val();
+                    surveyLinks.surveyA = links.surveyA || '';
+                    surveyLinks.surveyB = links.surveyB || '';
+                    document.getElementById('surveyALink').value = surveyLinks.surveyA;
+                    document.getElementById('surveyBLink').value = surveyLinks.surveyB;
+                    console.log('Links loaded from Firebase:', links);
+                } else {
+                    console.log('No links found in Firebase yet');
+                }
+            }).catch((error) => {
+                console.error('Error loading links from Firebase:', error);
+            });
+
+            // Load current links (fallback)
+            if (!surveyLinks.surveyA) document.getElementById('surveyALink').value = '';
+            if (!surveyLinks.surveyB) document.getElementById('surveyBLink').value = '';
             
             // Update statistics
             const totalCount = submissions.length;
