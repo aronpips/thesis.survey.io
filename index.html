@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Application</title>
     <style>
+        html, body {
+    height: 100%;
+    /* Ensures full-height for flex centering */
+    }
+        
+    body {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove side/top padding! */
+    }
         :root {
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
@@ -201,13 +214,15 @@
             background-color: var(--color-background);
             color: var(--color-text);
             line-height: var(--line-height-normal);
-            padding: var(--space-20);
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
+        max-width: 700px;
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+        }  
         .card {
             background-color: var(--color-surface);
             border-radius: var(--radius-lg);
