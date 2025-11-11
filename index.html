@@ -488,6 +488,29 @@
             }
         }
     </style>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+    <script>
+        // ===== FIREBASE CONFIGURATION =====
+        // Replace the values below with your actual Firebase config from Firebase Console
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCcqVTITfJDLGPbYRsnSuAi8lc8RXYmUs",
+            authDomain: "thesis-survey-app.firebaseapp.com",
+            databaseURL: "https://thesis-survey-app-default-rtdb.firebaseio.com/",
+            projectId: "thesis-survey-app",
+            storageBucket: "thesis-survey-app.firebasestorage.app",
+            messagingSenderId: "116636472083",
+            appId: "1:116636472083:web:d6b3608624ec271eb280e6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        console.log("Firebase initialized successfully!");
+    </script>
 </head>
 <body>
     <div class="container">
@@ -647,7 +670,6 @@
     </div>
 
     <script>
-        
         // Constants
         const ADMIN_EMAIL = '67521@novasbe.pt';
         
@@ -972,24 +994,5 @@
         // Initialize
         loadData();
     </script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBCcqVTITfJDLGPbYRsnSuAi8lc8RXYmUs",
-    authDomain: "thesis-survey-app.firebaseapp.com",
-    projectId: "thesis-survey-app",
-    storageBucket: "thesis-survey-app.firebasestorage.app",
-    messagingSenderId: "116636472083",
-    appId: "1:116636472083:web:d6b3608624ec271eb280e6"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
 </body>
 </html>
