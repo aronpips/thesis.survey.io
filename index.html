@@ -6,7 +6,6 @@
     <title>Survey Application</title>
     <style>
         :root {
-  /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
   --color-cream-50: rgba(252, 252, 249, 1);
@@ -30,7 +29,6 @@
   --color-orange-400: rgba(230, 129, 97, 1);
   --color-orange-500: rgba(168, 75, 47, 1);
 
-  /* RGB versions for opacity control */
   --color-brown-600-rgb: 94, 82, 64;
   --color-teal-500-rgb: 33, 128, 141;
   --color-slate-900-rgb: 19, 52, 59;
@@ -40,7 +38,6 @@
   --color-orange-500-rgb: 168, 75, 47;
   --color-orange-400-rgb: 230, 129, 97;
 
-  /* Background color tokens (Light Mode) */
   --color-bg-1: rgba(59, 130, 246, 0.08);
   --color-bg-2: rgba(245, 158, 11, 0.08);
   --color-bg-3: rgba(34, 197, 94, 0.08);
@@ -50,7 +47,6 @@
   --color-bg-7: rgba(236, 72, 153, 0.08);
   --color-bg-8: rgba(6, 182, 212, 0.08);
 
-  /* Semantic Color Tokens (Light Mode) */
   --color-background: var(--color-cream-50);
   --color-surface: var(--color-cream-100);
   --color-text: var(--color-slate-900);
@@ -72,7 +68,6 @@
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
-  /* Common style patterns */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
   --status-bg-opacity: 0.15;
@@ -80,13 +75,11 @@
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
 
-  /* RGB versions for opacity control */
   --color-success-rgb: 33, 128, 141;
   --color-error-rgb: 192, 21, 47;
   --color-warning-rgb: 168, 75, 47;
   --color-info-rgb: 98, 108, 113;
 
-  /* Typography */
   --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
@@ -108,7 +101,6 @@
   --line-height-normal: 1.5;
   --letter-spacing-tight: -0.01em;
 
-  /* Spacing */
   --space-0: 0;
   --space-1: 1px;
   --space-2: 2px;
@@ -122,14 +114,12 @@
   --space-24: 24px;
   --space-32: 32px;
 
-  /* Border Radius */
   --radius-sm: 6px;
   --radius-base: 8px;
   --radius-md: 10px;
   --radius-lg: 12px;
   --radius-full: 9999px;
 
-  /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
@@ -139,12 +129,10 @@
   --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
     inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 
-  /* Animation */
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Layout */
   --container-sm: 640px;
   --container-md: 768px;
   --container-lg: 1024px;
@@ -208,7 +196,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: var(--font-family-base);
             background-color: var(--color-background);
@@ -217,12 +204,10 @@
             padding: var(--space-20);
             min-height: 100vh;
         }
-
         .container {
             max-width: 700px;
             margin: 0 auto;
         }
-
         .card {
             background-color: var(--color-surface);
             border-radius: var(--radius-lg);
@@ -231,31 +216,26 @@
             padding: var(--space-32);
             margin-bottom: var(--space-24);
         }
-
         h1 {
             font-size: var(--font-size-4xl);
             font-weight: var(--font-weight-semibold);
             margin-bottom: var(--space-16);
             color: var(--color-text);
         }
-
         h2 {
             font-size: var(--font-size-2xl);
             font-weight: var(--font-weight-semibold);
             margin-bottom: var(--space-24);
             color: var(--color-text);
         }
-
         .subtitle {
             font-size: var(--font-size-lg);
             color: var(--color-text-secondary);
             margin-bottom: var(--space-32);
         }
-
         .form-group {
             margin-bottom: var(--space-24);
         }
-
         label {
             display: block;
             margin-bottom: var(--space-8);
@@ -263,7 +243,6 @@
             font-size: var(--font-size-base);
             color: var(--color-text);
         }
-
         input[type="email"],
         textarea,
         select {
@@ -277,7 +256,6 @@
             color: var(--color-text);
             transition: border-color var(--duration-fast) var(--ease-standard);
         }
-
         input[type="email"]:focus,
         textarea:focus,
         select:focus {
@@ -285,7 +263,6 @@
             border-color: var(--color-primary);
             box-shadow: var(--focus-ring);
         }
-
         select {
             appearance: none;
             background-image: var(--select-caret-light);
@@ -294,32 +271,27 @@
             background-size: 16px;
             padding-right: var(--space-32);
         }
-
         @media (prefers-color-scheme: dark) {
             select {
                 background-image: var(--select-caret-dark);
             }
         }
-
         textarea {
             min-height: 100px;
             resize: vertical;
         }
-
         .radio-group,
         .checkbox-group {
             display: flex;
             flex-direction: column;
             gap: var(--space-12);
         }
-
         .radio-option,
         .checkbox-option {
             display: flex;
             align-items: center;
             gap: var(--space-8);
         }
-
         input[type="radio"],
         input[type="checkbox"] {
             width: 18px;
@@ -327,24 +299,20 @@
             cursor: pointer;
             accent-color: var(--color-primary);
         }
-
         .scale-group {
             display: flex;
             flex-wrap: wrap;
             gap: var(--space-8);
         }
-
         .scale-option {
             display: flex;
             align-items: center;
             gap: var(--space-6);
         }
-
         .scale-option label {
             margin: 0;
             font-weight: var(--font-weight-normal);
         }
-
         .btn {
             padding: var(--space-12) var(--space-24);
             border: none;
@@ -355,62 +323,49 @@
             transition: all var(--duration-normal) var(--ease-standard);
             font-family: var(--font-family-base);
         }
-
         .btn-primary {
             background-color: var(--color-primary);
             color: var(--color-btn-primary-text);
         }
-
         .btn-primary:hover:not(:disabled) {
             background-color: var(--color-primary-hover);
         }
-
         .btn-primary:active:not(:disabled) {
             background-color: var(--color-primary-active);
         }
-
         .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-
         .btn-secondary {
             background-color: var(--color-secondary);
             color: var(--color-text);
         }
-
         .btn-secondary:hover {
             background-color: var(--color-secondary-hover);
         }
-
         .error-message {
             color: var(--color-error);
             font-size: var(--font-size-sm);
             margin-top: var(--space-8);
             display: none;
         }
-
         .error-message.show {
             display: block;
         }
-
         .screen {
             display: none;
         }
-
         .screen.active {
             display: block;
         }
-
         .thank-you-content {
             text-align: center;
         }
-
         .thank-you-icon {
             font-size: 60px;
             margin-bottom: var(--space-24);
         }
-
         .info-box {
             background-color: var(--color-bg-1);
             border: 1px solid var(--color-border);
@@ -418,12 +373,10 @@
             padding: var(--space-16);
             margin: var(--space-24) 0;
         }
-
         .info-box p {
             margin: var(--space-8) 0;
             font-size: var(--font-size-base);
         }
-
         .stats {
             background-color: var(--color-bg-2);
             border: 1px solid var(--color-card-border);
@@ -431,82 +384,66 @@
             padding: var(--space-24);
             margin-top: var(--space-24);
         }
-
         .stats h3 {
             font-size: var(--font-size-xl);
             margin-bottom: var(--space-16);
             color: var(--color-text);
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: var(--space-16);
         }
-
         .stat-item {
             background-color: var(--color-surface);
             padding: var(--space-16);
             border-radius: var(--radius-base);
             border: 1px solid var(--color-card-border);
         }
-
         .stat-label {
             font-size: var(--font-size-sm);
             color: var(--color-text-secondary);
             margin-bottom: var(--space-4);
         }
-
         .stat-value {
             font-size: var(--font-size-3xl);
             font-weight: var(--font-weight-semibold);
             color: var(--color-text);
         }
-
         .question-required {
             color: var(--color-error);
         }
-
         @media (max-width: 600px) {
             body {
                 padding: var(--space-12);
             }
-
             .card {
                 padding: var(--space-20);
             }
-
             h1 {
                 font-size: var(--font-size-3xl);
             }
-
             .scale-group {
                 justify-content: space-between;
             }
         }
     </style>
-
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script>
-        // ===== FIREBASE CONFIGURATION =====
-            
         const firebaseConfig = {
             apiKey: "AIzaSyBCcqVTITfJDLGPbYRsnSuAi8lc8RXYmUs",
             authDomain: "thesis-survey-app.firebaseapp.com",
-            databaseURL: "https://thesis-survey-app-default-rtdb.firebaseio.com",
+            databaseURL: "https://thesis-survey-app-default-rtdb.firebaseio.com/",
             projectId: "thesis-survey-app",
-            storageBucket: "thesis-survey-app.firebasestorage.app",
+            storageBucket: "thesis-survey-app.appspot.com",
             messagingSenderId: "116636472083",
             appId: "1:116636472083:web:d6b3608624ec271eb280e6"
         };
-        
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
-
-        console.log("Firebase initialized successfully!");
+        const auth = firebase.auth();
     </script>
 </head>
 <body>
@@ -576,7 +513,26 @@
             </div>
         </div>
 
-        <!-- Screen 4: Admin Dashboard -->
+        <!-- Screen 4: Admin Login -->
+        <div class="screen" id="adminLoginScreen">
+            <div class="card">
+                <h1>Admin Sign In</h1>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Email</label>
+                        <input type="email" id="adminEmail" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+                <div class="error-message" id="adminLoginError" style="margin-top: 12px;"></div>
+            </div>
+        </div>
+
+        <!-- Screen 5: Admin Dashboard -->
         <div class="screen" id="adminScreen">
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-24);">
@@ -625,7 +581,7 @@
                         <h2 style="margin: 0;">Submitted Responses</h2>
                         <div style="display: flex; gap: var(--space-8);">
                             <button class="btn btn-secondary" id="exportCSVBtn" style="padding: var(--space-8) var(--space-16); font-size: var(--font-size-sm);">Export CSV</button>
-                            <button class="btn btn-secondary" id="clearDataBtn" style="padding: var(--space-8) var(--space-16); font-size: var(--font-size-sm); background-color: var(--color-error); color: var(--color-white);">Clear All Data</button>
+                            <button class="btn btn-secondary" id="clearDataBtn" style="padding: var(--space-8) var(--space-16); font-size: var(--font-size-sm); background-color: var(--color-error); color: var(--color-cream-50);">Clear All Data</button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -652,9 +608,8 @@
             </div>
         </div>
     </div>
-
+    <!-- JS Code block is unchanged except for admin login logic as described in previous steps -->
     <script>
-        // ----------- ALL LOGIC BELOW PERSISTENT TO FIREBASE -----------
         // Constants
         const ADMIN_EMAIL = '67521@novasbe.pt';
         // State management (in-memory cache)
@@ -664,7 +619,6 @@
         let currentSurveyType = '';
         let sortColumn = 'timestamp';
         let sortDirection = 'desc';
-
         // DOM elements
         const emailInput = document.getElementById('emailInput');
         const emailForm = document.getElementById('emailForm');
@@ -684,8 +638,10 @@
         const surveyScreen = document.getElementById('surveyScreen');
         const thankYouScreen = document.getElementById('thankYouScreen');
         const adminScreen = document.getElementById('adminScreen');
+        const adminLoginScreen = document.getElementById('adminLoginScreen');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const adminLoginError = document.getElementById('adminLoginError');
 
-        // Email validation
         function isValidEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
@@ -696,14 +652,13 @@
             if (emailInput.value && !isValid) emailError.classList.add('show');
             else emailError.classList.remove('show');
         });
-
         // Handle email form submission
         emailForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (!isValidEmail(emailInput.value)) return;
             currentEmail = emailInput.value.trim();
             if (currentEmail === ADMIN_EMAIL) {
-                showScreen('admin'); updateAdminDashboard();
+                showScreen('adminLogin');
             } else {
                 db.ref('surveyLinks').once('value', (snapshot) => {
                     if (snapshot.exists()) {
@@ -718,7 +673,27 @@
             }
         });
 
-        // Setup survey page
+        // --- ADMIN: Auth logic ---
+        adminLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value.trim();
+            const password = document.getElementById('adminPassword').value;
+            adminLoginError.textContent = '';
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    if (email !== ADMIN_EMAIL) {
+                        adminLoginError.textContent = 'You are not authorized as admin.';
+                        auth.signOut();
+                        return;
+                    }
+                    showScreen('admin');
+                    updateAdminDashboard();
+                })
+                .catch((error) => {
+                    adminLoginError.textContent = error.message;
+                });
+        });
+
         function setupSurveyPage() {
             const surveyLink = currentSurveyType === 'A' ? surveyLinks.surveyA : surveyLinks.surveyB;
             const surveyName = `Survey ${currentSurveyType}`;
@@ -781,7 +756,6 @@
 
         // --- ADMIN: Update dashboard. Load links and submissions from Firebase ---
         function updateAdminDashboard() {
-            // Load links
             db.ref('surveyLinks').once('value', (snapshot) => {
                 if (snapshot.exists()) {
                     const links = snapshot.val();
@@ -795,13 +769,11 @@
                     document.getElementById('surveyBLink').value = '';
                 }
             });
-            // Load submissions
             db.ref('submissions').once('value', (snapshot) => {
                 submissions = [];
                 if (snapshot.exists()) {
                     snapshot.forEach(child => { submissions.push(child.val()); });
                 }
-                // Update statistics and table
                 const totalCount = submissions.length;
                 const surveyACount = submissions.filter(s => s.surveyType === 'A').length;
                 const surveyBCount = submissions.filter(s => s.surveyType === 'B').length;
@@ -813,8 +785,6 @@
                 updateResponsesTable();
             });
         }
-
-        // --- ADMIN: Update responses table ---
         function updateResponsesTable(searchTerm = '') {
             const tbody = document.getElementById('responsesTableBody');
             tbody.innerHTML = '';
@@ -861,11 +831,7 @@
                 tbody.appendChild(row);
             });
         }
-
-        // --- ADMIN: Search functionality ---
         searchEmail.addEventListener('input', (e) => { updateResponsesTable(e.target.value); });
-
-        // --- ADMIN: Table sorting ---
         document.querySelectorAll('[data-sort]').forEach(header => {
             header.addEventListener('click', () => {
                 const column = header.getAttribute('data-sort');
@@ -874,8 +840,6 @@
                 updateResponsesTable(searchEmail.value);
             });
         });
-
-        // --- ADMIN: Export CSV ---
         exportCSVBtn.addEventListener('click', () => {
             if (submissions.length === 0) {
                 alert('No data to export');
@@ -893,8 +857,6 @@
             a.click();
             window.URL.revokeObjectURL(url);
         });
-
-        // --- ADMIN: Clear all data from Firebase ---
         clearDataBtn.addEventListener('click', () => {
             if (confirm('Are you sure you want to clear all submission data? This action cannot be undone.')) {
                 db.ref('submissions').remove()
@@ -902,9 +864,10 @@
                   .catch((error) => { alert('Failed to clear data: ' + error.message); });
             }
         });
-
-        // --- ADMIN: Logout ---
-        logoutBtn.addEventListener('click', () => { resetToStart(); });
+        logoutBtn.addEventListener('click', () => { 
+            auth.signOut();
+            resetToStart(); 
+        });
         returnStartBtn.addEventListener('click', () => { resetToStart(); });
         function resetToStart() {
             emailForm.reset();
@@ -914,16 +877,16 @@
             currentSurveyType = '';
             showScreen('email');
         }
-
-        // --- Screen management ---
         function showScreen(screen) {
             emailScreen.classList.remove('active');
             surveyScreen.classList.remove('active');
             thankYouScreen.classList.remove('active');
             adminScreen.classList.remove('active');
+            adminLoginScreen.classList.remove('active');
             if (screen === 'email') emailScreen.classList.add('active');
             else if (screen === 'survey') surveyScreen.classList.add('active');
             else if (screen === 'thankYou') thankYouScreen.classList.add('active');
+            else if (screen === 'adminLogin') adminLoginScreen.classList.add('active');
             else if (screen === 'admin') adminScreen.classList.add('active');
         }
     </script>
