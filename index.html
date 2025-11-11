@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Application</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: var(--line-height-normal);
+            padding: var(--space-20);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-32);
+            margin-bottom: var(--space-24);
+        }
+
+
+
+        h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        h2 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-24);
+            color: var(--color-text);
+        }
+
+        .subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-32);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-24);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+        }
+
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            transition: border-color var(--duration-fast) var(--ease-standard);
+        }
+
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: var(--focus-ring);
+        }
+
+        select {
+            appearance: none;
+            background-image: var(--select-caret-light);
+            background-repeat: no-repeat;
+            background-position: right var(--space-12) center;
+            background-size: 16px;
+            padding-right: var(--space-32);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            select {
+                background-image: var(--select-caret-dark);
+            }
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--color-primary);
+        }
+
+        .scale-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+
+        .scale-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+        }
+
+        .scale-option label {
+            margin: 0;
+            font-weight: var(--font-weight-normal);
+        }
+
+        .btn {
+            padding: var(--space-12) var(--space-24);
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            font-family: var(--font-family-base);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-hover);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            background-color: var(--color-primary-active);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-secondary-hover);
+        }
+
+        .error-message {
+            color: var(--color-error);
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-8);
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .thank-you-content {
+            text-align: center;
+        }
+
+        .thank-you-icon {
+            font-size: 60px;
+            margin-bottom: var(--space-24);
+        }
+
+        .info-box {
+            background-color: var(--color-bg-1);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            padding: var(--space-16);
+            margin: var(--space-24) 0;
+        }
+
+        .info-box p {
+            margin: var(--space-8) 0;
+            font-size: var(--font-size-base);
+        }
+
+        .stats {
+            background-color: var(--color-bg-2);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            margin-top: var(--space-24);
+        }
+
+        .stats h3 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-16);
+        }
+
+        .stat-item {
+            background-color: var(--color-surface);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-4);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+        }
+
+        .question-required {
+            color: var(--color-error);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: var(--space-12);
+            }
+
+            .card {
+                padding: var(--space-20);
+            }
+
+            h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .scale-group {
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+        <!-- Screen 1: Email Collection -->
+        <div class="screen active" id="emailScreen">
+            <div class="card">
+                <h1>Welcome to Our Survey</h1>
+                <p class="subtitle">Please enter your email address to begin</p>
+                
+                <form id="emailForm">
+                    <div class="form-group">
+                        <label for="emailInput">Email Address <span class="question-required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            placeholder="your.email@example.com"
+                            required
+                        >
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="continueBtn" disabled>
+                        Continue
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Screen 2: Survey Assignment -->
+        <div class="screen" id="surveyScreen">
+            <div class="card">
+                <h2 id="surveyTitle"></h2>
+                <p class="subtitle" id="surveyInstructions"></p>
+                
+                <div class="info-box">
+                    <p><strong>Your Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Assigned Survey:</strong> <span id="assignedSurvey"></span></p>
+                </div>
+
+                <div id="surveyLinkContainer">
+                    <p style="margin-bottom: var(--space-16); color: var(--color-text-secondary);">Please complete the survey in the new tab that will open. After completing the survey, return here and click the button below.</p>
+                    <button class="btn btn-primary" id="openSurveyBtn" style="margin-bottom: var(--space-16); width: 100%;">
+                        Open Survey
+                    </button>
+                    <button class="btn btn-secondary" id="completedBtn" style="width: 100%;">
+                        I've Completed the Survey
+                    </button>
+                </div>
+
+                <div class="error-message" id="surveyLinkError" style="display: none; margin-top: var(--space-16);">Survey link not configured. Please contact the administrator.</div>
+            </div>
+        </div>
+
+        <!-- Screen 3: Thank You -->
+        <div class="screen" id="thankYouScreen">
+            <div class="card">
+                <div class="thank-you-content">
+                    <div class="thank-you-icon">✓</div>
+                    <h1>Thank You!</h1>
+                    <p class="subtitle">Your email has been recorded for the raffle</p>
+                    
+                    <div class="info-box">
+                        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+                        <p><strong>You completed:</strong> <span id="confirmSurvey"></span></p>
+                        <p><strong>Submitted:</strong> <span id="confirmTime"></span></p>
+                    </div>
+                    
+                    <button class="btn btn-secondary" id="returnStartBtn">
+                        Return to Start
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 4: Admin Dashboard -->
+        <div class="screen" id="adminScreen">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-24);">
+                    <h1>Admin Dashboard</h1>
+                    <button class="btn btn-secondary" id="logoutBtn">Logout</button>
+                </div>
+
+                <!-- Survey Link Management -->
+                <div style="margin-bottom: var(--space-32);">
+                    <h2>Survey Link Configuration</h2>
+                    <div class="form-group">
+                        <label for="surveyALink">Survey A Link</label>
+                        <input type="url" id="surveyALink" placeholder="Paste your Microsoft Survey A link here" style="width: 100%; padding: var(--space-12); border: 1px solid var(--color-border); border-radius: var(--radius-base); font-size: var(--font-size-base); font-family: var(--font-family-base); background-color: var(--color-surface); color: var(--color-text);">
+                    </div>
+                    <div class="form-group">
+                        <label for="surveyBLink">Survey B Link</label>
+                        <input type="url" id="surveyBLink" placeholder="Paste your Microsoft Survey B link here" style="width: 100%; padding: var(--space-12); border: 1px solid var(--color-border); border-radius: var(--radius-base); font-size: var(--font-size-base); font-family: var(--font-family-base); background-color: var(--color-surface); color: var(--color-text);">
+                    </div>
+                    <button class="btn btn-primary" id="saveLinksBtn">Save Links</button>
+                    <div id="linksSavedMessage" style="display: none; color: var(--color-success); margin-top: var(--space-12); font-size: var(--font-size-sm);">✓ Links saved successfully!</div>
+                </div>
+
+                <!-- Statistics Dashboard -->
+                <div style="margin-bottom: var(--space-32);">
+                    <h2>Response Statistics</h2>
+                    <div class="stats-grid" style="margin-top: var(--space-16);">
+                        <div class="stat-item" style="background-color: var(--color-bg-1);">
+                            <div class="stat-label">Total Responses</div>
+                            <div class="stat-value" id="adminTotalCount">0</div>
+                        </div>
+                        <div class="stat-item" style="background-color: var(--color-bg-3);">
+                            <div class="stat-label">Survey A Responses</div>
+                            <div class="stat-value" id="adminSurveyACount">0</div>
+                        </div>
+                        <div class="stat-item" style="background-color: var(--color-bg-6);">
+                            <div class="stat-label">Survey B Responses</div>
+                            <div class="stat-value" id="adminSurveyBCount">0</div>
+                        </div>
+                        <div class="stat-item" style="background-color: var(--color-bg-2);">
+                            <div class="stat-label">Completion Rate</div>
+                            <div class="stat-value" id="adminCompletionRate">100%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Response List -->
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-16);">
+                        <h2 style="margin: 0;">Submitted Responses</h2>
+                        <div style="display: flex; gap: var(--space-8);">
+                            <button class="btn btn-secondary" id="exportCSVBtn" style="padding: var(--space-8) var(--space-16); font-size: var(--font-size-sm);">Export CSV</button>
+                            <button class="btn btn-secondary" id="clearDataBtn" style="padding: var(--space-8) var(--space-16); font-size: var(--font-size-sm); background-color: var(--color-error); color: var(--color-white);">Clear All Data</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="searchEmail" placeholder="Search by email..." style="width: 100%; padding: var(--space-8) var(--space-12); border: 1px solid var(--color-border); border-radius: var(--radius-base); font-size: var(--font-size-sm); background-color: var(--color-surface); color: var(--color-text);">
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table id="responsesTable" style="width: 100%; border-collapse: collapse; font-size: var(--font-size-sm);">
+                            <thead>
+                                <tr style="background-color: var(--color-secondary); border-bottom: 2px solid var(--color-border);">
+                                    <th style="padding: var(--space-12); text-align: left; cursor: pointer;" data-sort="email">Email ↕</th>
+                                    <th style="padding: var(--space-12); text-align: left; cursor: pointer;" data-sort="surveyType">Survey Type ↕</th>
+                                    <th style="padding: var(--space-12); text-align: left; cursor: pointer;" data-sort="timestamp">Timestamp ↕</th>
+                                    <th style="padding: var(--space-12); text-align: left;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="responsesTableBody">
+                                <tr>
+                                    <td colspan="4" style="padding: var(--space-24); text-align: center; color: var(--color-text-secondary);">No responses yet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Constants
+        const ADMIN_EMAIL = '67521@novasbe.pt';
+        
+        // State management (in-memory storage)
+        let surveyLinks = {
+            surveyA: '',
+            surveyB: ''
+        };
+        
+        let submissions = [];
+        let currentEmail = '';
+        let currentSurveyType = '';
+        let sortColumn = 'timestamp';
+        let sortDirection = 'desc';
+
+        // DOM elements
+        const emailInput = document.getElementById('emailInput');
+        const emailForm = document.getElementById('emailForm');
+        const continueBtn = document.getElementById('continueBtn');
+        const emailError = document.getElementById('emailError');
+        const surveyTitle = document.getElementById('surveyTitle');
+        const surveyInstructions = document.getElementById('surveyInstructions');
+        const openSurveyBtn = document.getElementById('openSurveyBtn');
+        const completedBtn = document.getElementById('completedBtn');
+        const returnStartBtn = document.getElementById('returnStartBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const saveLinksBtn = document.getElementById('saveLinksBtn');
+        const exportCSVBtn = document.getElementById('exportCSVBtn');
+        const clearDataBtn = document.getElementById('clearDataBtn');
+        const searchEmail = document.getElementById('searchEmail');
+        const emailScreen = document.getElementById('emailScreen');
+        const surveyScreen = document.getElementById('surveyScreen');
+        const thankYouScreen = document.getElementById('thankYouScreen');
+        const adminScreen = document.getElementById('adminScreen');
+
+        // Initialize from memory (simulating persistence)
+        function loadData() {
+            // In a real app, this would load from localStorage or a backend
+            // For now, data persists only during the session
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        emailInput.addEventListener('input', () => {
+            const isValid = isValidEmail(emailInput.value);
+            continueBtn.disabled = !isValid;
+            
+            if (emailInput.value && !isValid) {
+                emailError.classList.add('show');
+            } else {
+                emailError.classList.remove('show');
+            }
+        });
+
+        // Handle email form submission
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (isValidEmail(emailInput.value)) {
+                currentEmail = emailInput.value.trim();
+                
+                // Check if admin
+                if (currentEmail === ADMIN_EMAIL) {
+                    showScreen('admin');
+                    updateAdminDashboard();
+                } else {
+                    // Randomly assign survey (50/50 split)
+                    currentSurveyType = Math.random() < 0.5 ? 'A' : 'B';
+                    showScreen('survey');
+                    setupSurveyPage();
+                }
+            }
+        });
+
+        // Setup survey page
+        function setupSurveyPage() {
+            const surveyLink = currentSurveyType === 'A' ? surveyLinks.surveyA : surveyLinks.surveyB;
+            const surveyName = `Survey ${currentSurveyType}`;
+            
+            surveyTitle.textContent = surveyName;
+            surveyInstructions.textContent = `You've been randomly assigned to ${surveyName}. Please complete it to enter the raffle.`;
+            document.getElementById('userEmail').textContent = currentEmail;
+            document.getElementById('assignedSurvey').textContent = surveyName;
+            
+            // Check if survey link is configured
+            if (!surveyLink) {
+                document.getElementById('surveyLinkContainer').style.display = 'none';
+                document.getElementById('surveyLinkError').style.display = 'block';
+            } else {
+                document.getElementById('surveyLinkContainer').style.display = 'block';
+                document.getElementById('surveyLinkError').style.display = 'none';
+                
+                // Set up button to open survey
+                openSurveyBtn.onclick = () => {
+                    window.open(surveyLink, '_blank');
+                };
+            }
+        }
+
+        // Handle survey completion
+        completedBtn.addEventListener('click', () => {
+            // Record submission
+            const submission = {
+                email: currentEmail,
+                surveyType: currentSurveyType,
+                timestamp: new Date().toISOString(),
+                status: 'completed'
+            };
+            
+            submissions.push(submission);
+            
+            // Show thank you screen
+            showThankYou(submission);
+        });
+
+        // Show thank you screen
+        function showThankYou(submission) {
+            document.getElementById('confirmEmail').textContent = submission.email;
+            document.getElementById('confirmSurvey').textContent = `Survey ${submission.surveyType}`;
+            
+            const date = new Date(submission.timestamp);
+            document.getElementById('confirmTime').textContent = date.toLocaleString();
+            
+            showScreen('thankYou');
+        }
+
+        // Admin: Save survey links
+        saveLinksBtn.addEventListener('click', () => {
+            const surveyALink = document.getElementById('surveyALink').value.trim();
+            const surveyBLink = document.getElementById('surveyBLink').value.trim();
+            
+            if (!surveyALink || !surveyBLink) {
+                alert('Please enter both survey links');
+                return;
+            }
+            
+            surveyLinks.surveyA = surveyALink;
+            surveyLinks.surveyB = surveyBLink;
+            
+            // Show confirmation message
+            const message = document.getElementById('linksSavedMessage');
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        });
+
+        // Admin: Update dashboard
+        function updateAdminDashboard() {
+            // Load current links
+            document.getElementById('surveyALink').value = surveyLinks.surveyA;
+            document.getElementById('surveyBLink').value = surveyLinks.surveyB;
+            
+            // Update statistics
+            const totalCount = submissions.length;
+            const surveyACount = submissions.filter(s => s.surveyType === 'A').length;
+            const surveyBCount = submissions.filter(s => s.surveyType === 'B').length;
+            const completionRate = totalCount > 0 ? '100%' : '0%';
+            
+            document.getElementById('adminTotalCount').textContent = totalCount;
+            document.getElementById('adminSurveyACount').textContent = surveyACount;
+            document.getElementById('adminSurveyBCount').textContent = surveyBCount;
+            document.getElementById('adminCompletionRate').textContent = completionRate;
+            
+            // Update responses table
+            updateResponsesTable();
+        }
+
+        // Admin: Update responses table
+        function updateResponsesTable(searchTerm = '') {
+            const tbody = document.getElementById('responsesTableBody');
+            tbody.innerHTML = '';
+            
+            let filteredSubmissions = submissions.filter(s => 
+                s.email.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            
+            // Sort submissions
+            filteredSubmissions.sort((a, b) => {
+                let aVal = a[sortColumn];
+                let bVal = b[sortColumn];
+                
+                if (sortColumn === 'timestamp') {
+                    aVal = new Date(aVal).getTime();
+                    bVal = new Date(bVal).getTime();
+                }
+                
+                if (sortDirection === 'asc') {
+                    return aVal > bVal ? 1 : -1;
+                } else {
+                    return aVal < bVal ? 1 : -1;
+                }
+            });
+            
+            if (filteredSubmissions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="padding: var(--space-24); text-align: center; color: var(--color-text-secondary);">No responses found</td></tr>';
+                return;
+            }
+            
+            filteredSubmissions.forEach(submission => {
+                const row = document.createElement('tr');
+                row.style.borderBottom = '1px solid var(--color-border)';
+                
+                const emailCell = document.createElement('td');
+                emailCell.style.padding = 'var(--space-12)';
+                emailCell.textContent = submission.email;
+                row.appendChild(emailCell);
+                
+                const surveyTypeCell = document.createElement('td');
+                surveyTypeCell.style.padding = 'var(--space-12)';
+                surveyTypeCell.textContent = `Survey ${submission.surveyType}`;
+                row.appendChild(surveyTypeCell);
+                
+                const timestampCell = document.createElement('td');
+                timestampCell.style.padding = 'var(--space-12)';
+                const date = new Date(submission.timestamp);
+                timestampCell.textContent = date.toLocaleString();
+                row.appendChild(timestampCell);
+                
+                const statusCell = document.createElement('td');
+                statusCell.style.padding = 'var(--space-12)';
+                const statusBadge = document.createElement('span');
+                statusBadge.className = 'status status--success';
+                statusBadge.textContent = 'Completed';
+                statusCell.appendChild(statusBadge);
+                row.appendChild(statusCell);
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Admin: Search functionality
+        searchEmail.addEventListener('input', (e) => {
+            updateResponsesTable(e.target.value);
+        });
+
+        // Admin: Table sorting
+        document.querySelectorAll('[data-sort]').forEach(header => {
+            header.addEventListener('click', () => {
+                const column = header.getAttribute('data-sort');
+                if (sortColumn === column) {
+                    sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                } else {
+                    sortColumn = column;
+                    sortDirection = 'asc';
+                }
+                updateResponsesTable(searchEmail.value);
+            });
+        });
+
+        // Admin: Export CSV
+        exportCSVBtn.addEventListener('click', () => {
+            if (submissions.length === 0) {
+                alert('No data to export');
+                return;
+            }
+            
+            let csv = 'Email,Survey Type,Timestamp,Status\n';
+            submissions.forEach(s => {
+                csv += `${s.email},Survey ${s.surveyType},${s.timestamp},${s.status}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `survey-responses-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Admin: Clear all data
+        clearDataBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all submission data? This action cannot be undone.')) {
+                submissions = [];
+                updateAdminDashboard();
+            }
+        });
+
+        // Admin: Logout
+        logoutBtn.addEventListener('click', () => {
+            resetToStart();
+        });
+
+        // Return to start
+        returnStartBtn.addEventListener('click', () => {
+            resetToStart();
+        });
+
+        // Reset to start
+        function resetToStart() {
+            emailForm.reset();
+            emailInput.value = '';
+            continueBtn.disabled = true;
+            currentEmail = '';
+            currentSurveyType = '';
+            showScreen('email');
+        }
+
+        // Screen management
+        function showScreen(screen) {
+            emailScreen.classList.remove('active');
+            surveyScreen.classList.remove('active');
+            thankYouScreen.classList.remove('active');
+            adminScreen.classList.remove('active');
+            
+            if (screen === 'email') {
+                emailScreen.classList.add('active');
+            } else if (screen === 'survey') {
+                surveyScreen.classList.add('active');
+            } else if (screen === 'thankYou') {
+                thankYouScreen.classList.add('active');
+            } else if (screen === 'admin') {
+                adminScreen.classList.add('active');
+            }
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
