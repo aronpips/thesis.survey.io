@@ -479,7 +479,7 @@
                 <p class="subtitle" id="surveyInstructions"></p>
                 <div class="info-box">
                     <p><strong>Your Email:</strong> <span id="userEmail"></span></p>
-                    <p><strong>Assigned Survey:</strong> <span id="assignedSurvey"></span></p>
+                    <p><strong>Survey:</strong> <span id="assignedSurvey"></span></p>
                 </div>
                 <div id="surveyLinkContainer">
                     <p style="margin-bottom: var(--space-16); color: var(--color-text-secondary);">Please complete the survey in the new tab that will open. After completing the survey, return here and click the button below.</p>
@@ -697,10 +697,9 @@
         function setupSurveyPage() {
             const surveyLink = currentSurveyType === 'A' ? surveyLinks.surveyA : surveyLinks.surveyB;
             const surveyName = `Survey ${currentSurveyType}`;
-            surveyTitle.textContent = surveyName;
-            surveyInstructions.textContent = `You've been randomly assigned to ${surveyName}. Please complete it to enter the raffle.`;
+            surveyTitle.textContent = 'You are all set!';
+            surveyInstructions.textContent = `Below you will find your survey link. Please complete it to enter the raffle.`;
             document.getElementById('userEmail').textContent = currentEmail;
-            document.getElementById('assignedSurvey').textContent = surveyName;
             if (!surveyLink) {
                 document.getElementById('surveyLinkContainer').style.display = 'none';
                 document.getElementById('surveyLinkError').style.display = 'block';
