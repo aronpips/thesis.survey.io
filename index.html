@@ -500,7 +500,7 @@
                     <button class="btn btn-primary" id="openSurveyBtn" style="margin-bottom: var(--space-16); width: 100%;">
                         Open Survey
                     </button>
-                    <button class="btn btn-secondary" id="completedBtn" style="width: 100%;">
+                    <button class="btn btn-secondary" id="completedBtn" style="width: 100%; display: none;">
                         I've Completed the Survey
                     </button>
                 </div>
@@ -681,6 +681,10 @@
                         surveyLinks.surveyB = links.surveyB || '';
                     }
                     currentSurveyType = Math.random() < 0.5 ? 'A' : 'B';
+                    const surveyLink = currentSurveyType === 'A' ? surveyLinks.surveyA : surveyLinks.surveyB;
+                    if (surveyLink) {
+                        window.open(surveyLink, '_blank');
+                    }
                     showScreen('survey');
                     setupSurveyPage();
                 });
@@ -722,6 +726,13 @@
                 document.getElementById('surveyLinkError').style.display = 'none';
                 openSurveyBtn.onclick = () => window.open(surveyLink, '_blank');
             }
+        
+
+         // Hide the "Completed" button initially and show after 10 seconds
+        completedBtn.style.display = "none";
+        setTimeout(() => {
+        completedBtn.style.display = "block";
+        }, 10000); // 10000 milliseconds = 10 seconds
         }
 
         // Handle survey completion - SAVE TO FIREBASE
